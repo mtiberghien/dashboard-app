@@ -19,7 +19,7 @@
     <div class="menu">
         <div class="navbar-menu">
             <div class="navbar-start">
-                <button class="button is-small navbar-item">
+                <button class="button is-small navbar-item" (click)="editing = true">
                     <span class="icon">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </span>
@@ -41,4 +41,20 @@
     </div>
 </div>
 
+<div class="modal" (keyup)="onModalKeyPress($event)" [ngClass]="{'is-active':editing}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Editing Cell {{index}} of row {{parent.index}}</p>
+        <button class="delete"  aria-label="close" (click)="editing=false"></button>
+      </header>
+      <section class="modal-card-body">
+        <app-cell-edit  [cell]="clone"></app-cell-edit>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" (click)="onEdited()">Save</button>
+        <button class="button" (click)="editing=false">Cancel</button>
+      </footer>
+    </div>
+  </div>
 

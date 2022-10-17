@@ -1,6 +1,5 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Cell } from '../models/cell';
-import { Row } from '../models/row';
 import { RowComponent } from '../row/row.component';
 
 @Component({
@@ -10,20 +9,26 @@ import { RowComponent } from '../row/row.component';
 })
 export class CellComponent implements OnInit {
   @Input() cell!: Cell;
+  clone!: Cell;
   @Input() index!: number;
   @Input() parent!: RowComponent;
   cells!: Cell[];
   private clientRect!: DOMRect;
   resizing: boolean = false;
+  editing: boolean = false;
   @Output() added = new EventEmitter();
   @Output() deleted = new EventEmitter();
   @Output() draggingStart = new EventEmitter();
   @Output() draggingEnd = new EventEmitter();
   @Output() draggingOver = new EventEmitter();
+  @HostListener('document:keyup.escape', ['$event']) onEscapeKeyUpHandler(event: KeyboardEvent) {
+    this.editing=false;
+}
   constructor() { }
 
   ngOnInit(): void {
     this.cells = this.parent.row.cells;
+    this.clone = {...this.cell};
   }
 
   onMouseDown(e: MouseEvent, direction: number)
@@ -74,5 +79,17 @@ export class CellComponent implements OnInit {
     onDragOver(e: DragEvent){
       let delta = e.clientX-this.clientRect.x
       this.draggingOver.emit({dropCellIndex: (delta) < (this.clientRect.width/2) ? this.index : this.index+1, dropRowIndex: this.parent.index}); 
+    }
+
+    onEdited()
+    {
+      this.cell.content = this.clone.content;
+      this.editing = false;
+    }
+
+    onModalKeyPress(e: KeyboardEvent){
+      if(e.key === 'Enter'){
+        this.onEdited();
+      }
     }
 }

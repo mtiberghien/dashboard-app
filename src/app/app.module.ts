@@ -7,6 +7,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { RowComponent } from './row/row.component';
 import { CellComponent } from './cell/cell.component';
 import {HttpClientModule} from '@angular/common/http';
+import { CellEditComponent } from './cell-edit/cell-edit.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {HttpClientModule} from '@angular/common/http';
     DashboardComponent,
     LayoutComponent,
     RowComponent,
-    CellComponent
+    CellComponent,
+    CellEditComponent
   ],
   imports: [
     BrowserModule,
