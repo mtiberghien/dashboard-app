@@ -9,3 +9,29 @@ app-row {
 .resizing-vertical{
     cursor: ns-resize;
 }
+
+.layout{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.layout:hover > .border, .layout:active >.border{
+    visibility: visible;
+}
+
+.rows{
+    display: flex;
+    flex-direction: column;
+}
+
+.border{
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: ew-resize;
+    align-self: center;
+    margin: 0.75rem;
+}

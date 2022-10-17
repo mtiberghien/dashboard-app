@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav *ngIf="dashboard" class="navbar">
     <div class="container">
       <div class="navbar-brand">
         
@@ -9,6 +9,15 @@
         </span>
       </div>
       <div id="navbarMenuHeroA" class="navbar-menu">
+        <div class="navbar-start">
+          <div class = "navbar-item">
+            <label class="switch is-rounded">
+              <input type="checkbox" [checked]="dashboard.isLayoutMode" (change)="dashboard.isLayoutMode = !dashboard.isLayoutMode">
+              <span class="check is-info"></span>
+              <span class="control-label">Layout Mode</span>
+            </label>
+          </div>
+        </div>
         <div class="navbar-end">
           <span class="navbar-item">
             <a class="button" (click)="onSave()">
@@ -22,6 +31,6 @@
       </div>
     </div>
   </nav>
-<app-layout *ngIf="dashboard" class="container is-fluid dashboard" [layout]="dashboard.layout"></app-layout>
+<app-layout *ngIf="dashboard" class="container is-fluid dashboard" [layout]="dashboard.layout" [dashboard]="dashboard"></app-layout>
 
 

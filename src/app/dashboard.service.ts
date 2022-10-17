@@ -18,7 +18,7 @@ export class DashboardService {
 
   download(dashboard: Dashboard) {
     const a = document.createElement("a");
-    const file = new Blob([JSON.stringify(dashboard)], { type: "text/plain" });
+    const file = new Blob([JSON.stringify(dashboard, null, 4)], { type: "text/plain" });
     a.href = URL.createObjectURL(file);
     a.download = "dashboard.json";
     a.click();

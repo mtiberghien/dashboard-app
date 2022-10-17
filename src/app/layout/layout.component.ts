@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Dashboard } from '../models/dashboard';
 import { DragStartEventsArgs } from '../models/events';
 import { Layout } from '../models/layout';
 
@@ -9,6 +10,7 @@ import { Layout } from '../models/layout';
 })
 export class LayoutComponent implements OnInit {
   @Input() layout!: Layout;
+  @Input() dashboard!: Dashboard;
   draggingRowIndex?: number;
   draggingCellIndex?: number;
   dropCellIndex?: number;
@@ -20,7 +22,7 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.ghost = document.createElement('img');
-    this.ghost.src = 'ghost.png';
+    this.ghost.src = 'assets/ghost.png';
   }
 
   onAdded(index: number): void {
@@ -55,7 +57,6 @@ export class LayoutComponent implements OnInit {
       }
       let element = this.layout.rows[this.draggingRowIndex!].cells.splice(dragCIndex, 1)[0];
       this.layout.rows[dropRIndex].cells.splice(dropCIndex, 0, element);
-      console.log(`dragged ${element.content} from (${this.draggingRowIndex},${this.draggingCellIndex}) to (${this.dropRowIndex},${dropCIndex})`);
     }
     this.draggingCellIndex = undefined;
     this.draggingRowIndex = undefined;
@@ -68,5 +69,22 @@ export class LayoutComponent implements OnInit {
   isDroppable(): boolean{
     return (this.dropRowIndex !== this.draggingRowIndex ||(this.dropCellIndex !== this.draggingCellIndex && this.dropCellIndex !== this.draggingCellIndex!+1));
   }
+
+  onMouseDown(e: MouseEvent, direction: number)
+    {
+        let startX = e.clientX;
+        this.onDraggingStart({cellIndex:-1, rowIndex:-1, isResizing:true})
+        let ref_size = (window.screen.width/2)||500;
+        console.log(ref_size);
+        let initial_grow = this.dashboard.grow || 1;
+        document.onmousemove = (e: MouseEvent)=>{
+          var delta = direction *(e.clientX - startX);
+          this.dashboard.grow = Math.max(0.5, Math.min(initial_grow + (delta/ref_size), 1));
+        }
+        document.onmouseup = () => {
+            document.onmousemove = document.onmouseup = null;
+            this.onDraggingEnd();
+        }
+    }
 
 }

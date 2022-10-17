@@ -1,8 +1,8 @@
 <div [ngClass]="{higlightable: isHighlightable(),
-    'grabbable': parent.parent.draggingRowIndex === undefined && parent.row.cells.length>1,
+    'grabbable': parent.parent.dashboard.isLayoutMode && parent.parent.draggingRowIndex === undefined && parent.row.cells.length>1,
     'menu-highlightable': parent.parent.draggingCellIndex === undefined && parent.parent.draggingRowIndex === undefined}"
      class="tile is-child box cell">
-    <div  *ngIf="cells.length>1" class="border" (mousedown)="onMouseDown($event, -1)" >
+    <div  *ngIf="parent.parent.dashboard.isLayoutMode && cells.length>1" class="border" (mousedown)="onMouseDown($event, -1)" >
         <i class="fa-solid fa-grip-vertical"></i>
     </div>
     <div (dragover)="onDragOver($event)"
@@ -10,10 +10,10 @@
          (dragstart)="onDragStart($event)"
          (dragleave)="onDragLeave()"
          (dragend)="onDragEnd()"
-         [draggable]="parent.row.cells.length>1" class="content">
+         [draggable]="parent.parent.dashboard.isLayoutMode && parent.row.cells.length>1" class="content">
         <p  class="disable-text-selection">{{cell.content}}</p>
     </div>
-    <div  *ngIf="cells.length>1" class="border" (mousedown)="onMouseDown($event, 1)" >
+    <div  *ngIf="parent.parent.dashboard.isLayoutMode && cells.length>1" class="border" (mousedown)="onMouseDown($event, 1)" >
         <i class="fa-solid fa-grip-vertical"></i>
     </div>
     <div class="menu">
@@ -25,7 +25,7 @@
                     </span>
                 </button> 
             </div>
-            <div class="navbar-end">
+            <div *ngIf="parent.parent.dashboard.isLayoutMode" class="navbar-end">
                 <button class="button is-small navbar-item" [disabled]="cells.length<2" (click)="deleted.emit()">
                     <span class="icon">
                         <i class="fa-solid fa-trash"></i>

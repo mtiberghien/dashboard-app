@@ -31,7 +31,6 @@ export class CellComponent implements OnInit {
         this.resizing = true;
         this.draggingStartEmit(true);
         let startX = e.clientX;
-        let cell_content = this.cell.content;
         let initial_grow = this.cell.grow || 1;
         document.onmousemove = (e: MouseEvent)=>{
           var delta = direction *(e.clientX - startX);
@@ -39,7 +38,6 @@ export class CellComponent implements OnInit {
         }
         document.onmouseup = () => {
             document.onmousemove = document.onmouseup = null;
-            this.cell.content = cell_content;
             this.draggingEnd.emit();
             this.resizing = false;
         }
