@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
 import { Dashboard } from '../models/dashboard';
-import { Layout } from '../models/layout';
-import { mock_layout } from '../models/mock-layout';
+
 
 @Component({
   selector: 'app-dashboard',
