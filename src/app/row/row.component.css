@@ -20,9 +20,9 @@
 }
 
 .drop-index{
-    background-color: rgb(98, 11, 247);
+    background-color: rgb(16, 148, 224);
     width: 3px;
-    height: 100%;
+    height: 50%;
     align-self: center;
 }
 
@@ -35,9 +35,20 @@
 }
 
 .border {
+    height: 16px;
     visibility: hidden;
     cursor: ns-resize;
     align-self: center;
+}
+
+app-cell, .row{
+    padding-top: 5px!important;
+    padding-bottom: 5px!important;
+}
+
+.row{
+    padding-top: 8px!important;
+    padding-bottom: 8px!important;
 }
 
 .row-content{

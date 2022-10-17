@@ -57,7 +57,8 @@ export class CellComponent implements OnInit {
       this.draggingEnd.emit();
     }
 
-    onDragStart(){
+    onDragStart(e: DragEvent){  
+      e.dataTransfer?.setDragImage(this.parent.parent.ghost, 25,25);
       this.draggingStartEmit(false);
     }
 

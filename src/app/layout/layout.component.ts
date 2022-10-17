@@ -12,12 +12,15 @@ export class LayoutComponent implements OnInit {
   draggingRowIndex?: number;
   draggingCellIndex?: number;
   dropCellIndex?: number;
+  ghost!: HTMLImageElement;
   dropRowIndex?: number;
   isResizing?: boolean = false;
   isHorizontal?: boolean;
   constructor() { }
 
   ngOnInit(): void {
+    this.ghost = document.createElement('img');
+    this.ghost.src = 'ghost.png';
   }
 
   onAdded(index: number): void {

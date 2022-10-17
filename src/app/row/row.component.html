@@ -13,12 +13,12 @@
             </span>
         </button>
     </div>
-    <div class="tile row-content" >
+    <div class="tile row-content">
         <div *ngIf="parent.layout.rows.length>1" class="border" (mousedown)="onMouseDown($event, -1)">
             <i class="fa-solid fa-grip"></i>
         </div>
-        <div class="tile">
-            <div [style]="{flex:cell.grow}" class="tile" *ngFor="let cell of row.cells; let cindex = index; let isLast = last;">
+        <div class="tile cells">
+            <div [style]="{flex:cell.grow}" class="cell-container tile" *ngFor="let cell of row.cells; let cindex = index; let isLast = last;">
                 <div *ngIf="isShowDropIndex(true, isLast, cindex)" class="drop-index"></div>
                 <app-cell 
                 class="tile is-parent" 

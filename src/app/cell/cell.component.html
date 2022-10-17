@@ -7,7 +7,7 @@
     </div>
     <div (dragover)="onDragOver($event)"
          (dragenter)="onDragEnter($event)"
-         (dragstart)="onDragStart()"
+         (dragstart)="onDragStart($event)"
          (dragleave)="onDragLeave()"
          (dragend)="onDragEnd()"
          [draggable]="parent.row.cells.length>1" class="content">
