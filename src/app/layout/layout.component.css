@@ -1,0 +1,11 @@
+app-row {
+    margin-bottom: 0!important;
+}
+
+.resizing-horizontal{
+    cursor: ew-resize;
+}
+
+.resizing-vertical{
+    cursor: ns-resize;
+}

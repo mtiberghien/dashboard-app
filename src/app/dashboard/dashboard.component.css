@@ -1,0 +1,9 @@
+.dashboard {
+    height:780px;
+    display:flex;
+    flex-direction:column;
+}
+
+app-layout{
+    margin-top:25px;
+}

@@ -1,0 +1,42 @@
+<div [ngClass]="{'menu-highlightable': parent.draggingRowIndex === undefined,
+                 highlightable: parent.draggingRowIndex === undefined || parent.draggingRowIndex === index}" class ="row tile is-parent">
+    <p class ="subtitle disable-text-selection" >Row {{index + 1}}</p>
+    <div class="menu">
+        <button class="add-button button is-small" [disabled]="parent.layout.rows.length<2" (click)="deleted.emit()">
+            <span class="icon">
+                <i class="fa-solid fa-trash"></i>
+            </span>
+        </button> 
+        <button class="add-button button is-small" [disabled]="parent.layout.rows.length>3" (click)="added.emit()">
+            <span class="icon">
+                <i class="fa-solid fa-plus"></i>
+            </span>
+        </button>
+    </div>
+    <div class="tile row-content" >
+        <div *ngIf="parent.layout.rows.length>1" class="border" (mousedown)="onMouseDown($event, -1)">
+            <i class="fa-solid fa-grip"></i>
+        </div>
+        <div class="tile">
+            <div [style]="{flex:cell.grow}" class="tile" *ngFor="let cell of row.cells; let cindex = index; let isLast = last;">
+                <div *ngIf="isShowDropIndex(true, isLast, cindex)" class="drop-index"></div>
+                <app-cell 
+                class="tile is-parent" 
+                [cell]="cell"
+                [index]="cindex"
+                [parent]="this"
+                (added)="onAdded(cindex)"
+                (deleted)="onDeleted(cindex)"
+                (draggingStart)="onDraggingStart($event)"
+                (draggingEnd)="onDraggingEnd()"
+                (draggingOver)="draggingOver.emit($event)" >      
+                </app-cell>
+                <div *ngIf="isShowDropIndex(false, isLast, cindex)" class="drop-index"></div>
+            </div>
+        </div>
+        <div *ngIf="parent.layout.rows.length>1" class="border" (mousedown)="onMouseDown($event, 1)">
+            <i class="fa-solid fa-grip"></i>
+        </div>
+    </div>
+</div>
+

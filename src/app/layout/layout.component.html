@@ -1,0 +1,15 @@
+<app-row *ngFor="let row of layout.rows; let rindex = index;" 
+         [row]="row" 
+         [index]="rindex"
+         [parent]="this" 
+         class="tile is-ancestor" 
+         (added)="onAdded(rindex)"
+         (deleted)="onDeleted(rindex)"
+         (draggingStart)="onDraggingStart($event)"
+         (draggingEnd)="onDraggingEnd()"
+         (draggingOver)="onDraggingOver($event.dropRowIndex, $event.dropCellIndex)"
+         [ngClass]="{'resizing-horizontal': isResizing && isHorizontal,
+                     'resizing-vertical': isResizing && !isHorizontal}"
+         [style]="{flex: row.grow}">
+</app-row>
+

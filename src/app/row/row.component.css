@@ -1,0 +1,46 @@
+.subtitle {
+    align-self: center;
+    margin:0px 25px 0px 0px!important;
+}
+
+.menu {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+
+.resizing-horizontal{
+    cursor: ew-resize;
+}
+
+.resizing-vertical{
+    cursor: ns-resize;
+}
+
+.drop-index{
+    background-color: rgb(98, 11, 247);
+    width: 3px;
+    height: 100%;
+    align-self: center;
+}
+
+.highlightable:hover, .row:active {
+    background-color: rgb(249, 249, 249);
+}
+
+.menu-highlightable:hover > .menu, .row-content:active > .border, .highlightable:hover >.row-content> .border {
+    visibility: visible;
+}
+
+.border {
+    visibility: hidden;
+    cursor: ns-resize;
+    align-self: center;
+}
+
+.row-content{
+    display: flex;
+    flex-direction: column;
+}

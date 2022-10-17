@@ -1,0 +1,42 @@
+.cell {
+    position: relative;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px!important;
+}
+
+.higlightable:hover, .cell:active {
+    background-color: rgb(232, 238, 238);
+}
+
+.grabbable{
+    cursor: grab;
+}
+
+.menu-highlightable:hover > .menu, .cell:active > .border, .higlightable:hover > .border{
+    visibility: visible;
+}
+
+.menu {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    align-self: flex-start;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1px!important;
+    position: relative;
+}
+
+.border{
+    visibility: hidden;
+    cursor: ew-resize;
+}
