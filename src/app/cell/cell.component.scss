@@ -1,3 +1,5 @@
+@import '../../styles.scss';
+
 .cell {
     position: relative;
     display:flex;
@@ -8,7 +10,7 @@
 }
 
 .higlightable:hover, .cell:active {
-    background-color: rgb(232, 238, 238);
+    background-color: $grey-lightest;
 }
 
 .grabbable{

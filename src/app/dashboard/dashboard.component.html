@@ -1,14 +1,7 @@
-<nav *ngIf="dashboard" class="navbar">
+<div class="dashboard-container">
+  <nav *ngIf="dashboard" class="navbar">
     <div class="container">
-      <div class="navbar-brand">
-        
-        <span class="navbar-burger" data-target="navbarMenuHeroA">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </div>
-      <div id="navbarMenuHeroA" class="navbar-menu">
+      <div class="navbar-menu">
         <div class="navbar-start">
           <div class = "navbar-item">
             <label class="switch is-rounded">
@@ -31,6 +24,8 @@
       </div>
     </div>
   </nav>
-<app-layout *ngIf="dashboard" class="container is-fluid dashboard" [layout]="dashboard.layout" [dashboard]="dashboard"></app-layout>
+<app-layout *ngIf="dashboard" class="dashboard" [layout]="dashboard.layout" [dashboard]="dashboard"></app-layout>
+</div>
+
 
 

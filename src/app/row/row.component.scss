@@ -1,3 +1,5 @@
+@import '../../styles.scss';
+
 .subtitle {
     align-self: center;
     margin:0px 25px 0px 0px!important;
@@ -20,14 +22,14 @@
 }
 
 .drop-index{
-    background-color: rgb(16, 148, 224);
+    background-color: $info;
     width: 3px;
     height: 50%;
     align-self: center;
 }
 
 .highlightable:hover, .row:active {
-    background-color: rgb(249, 249, 249);
+    background-color: $white-bis;
 }
 
 .menu-highlightable:hover > .menu, .row-content:active > .border, .highlightable:hover >.row-content> .border {

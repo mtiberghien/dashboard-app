@@ -17,7 +17,7 @@
                         "content": "Cell 3"
                     }
                 ],
-                "grow": 1.6
+                "grow": 1
             },
             {
                 "cells": [
@@ -28,7 +28,7 @@
                         "content": "Cell 2"
                     }
                 ],
-                "grow": 3
+                "grow": 1.8866666666666667
             },
             {
                 "cells": [
@@ -48,7 +48,7 @@
                         "content": "Cell 5"
                     }
                 ],
-                "grow": 1.78
+                "grow": 1
             }
         ]
     }

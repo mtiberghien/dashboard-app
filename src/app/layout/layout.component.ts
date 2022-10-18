@@ -6,7 +6,7 @@ import { Layout } from '../models/layout';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css']
+  styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
   @Input() layout!: Layout;
