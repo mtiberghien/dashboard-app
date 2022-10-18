@@ -36,10 +36,11 @@ export class CellComponent implements OnInit {
         this.resizing = true;
         this.draggingStartEmit(true);
         let startX = e.clientX;
+        let ref_size = ((window.screen.width * (this.parent.parent.dashboard.grow || 1) / this.cells.length)/(this.cell.grow || 1)) || 150;
         let initial_grow = this.cell.grow || 1;
         document.onmousemove = (e: MouseEvent)=>{
           var delta = direction *(e.clientX - startX);
-          this.cell.grow = Math.max(1, Math.min(initial_grow + (delta/150.0), 3));
+          this.cell.grow = Math.max(1, Math.min(initial_grow + (delta/ref_size), 3));
         }
         document.onmouseup = () => {
             document.onmousemove = document.onmouseup = null;

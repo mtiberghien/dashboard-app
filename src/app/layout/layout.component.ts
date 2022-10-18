@@ -75,7 +75,6 @@ export class LayoutComponent implements OnInit {
         let startX = e.clientX;
         this.onDraggingStart({cellIndex:-1, rowIndex:-1, isResizing:true})
         let ref_size = (window.screen.width/2)||500;
-        console.log(ref_size);
         let initial_grow = this.dashboard.grow || 1;
         document.onmousemove = (e: MouseEvent)=>{
           var delta = direction *(e.clientX - startX);

@@ -44,10 +44,11 @@ export class RowComponent implements OnInit {
   {
       this.draggingStart.emit({rowIndex: this.index, cellIndex: undefined, isResizing: true});
       let startY = e.clientY;
+      let ref_size = ((window.screen.height / this.parent.layout.rows.length)/(this.row.grow || 1)) || 150;
       let initial_grow = this.row.grow || 1;
       document.onmousemove = (e: MouseEvent)=>{
         var delta = direction *(e.clientY - startY);
-        this.row.grow = Math.max(1, Math.min(initial_grow + (delta/150.0), 3));
+        this.row.grow = Math.max(1, Math.min(initial_grow + (delta/ref_size), 3));
       }
       document.onmouseup = () => {
           document.onmousemove = document.onmouseup = null;
