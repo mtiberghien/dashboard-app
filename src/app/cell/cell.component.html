@@ -18,7 +18,7 @@
     </div>
     <div class="menu">
         <div class="navbar-menu">
-            <div class="navbar-start">
+            <div *ngIf="parent.parent.dashboard.isEditMode" class="navbar-start">
                 <button class="button is-small navbar-item" (click)="editing = true">
                     <span class="icon">
                         <i class="fa-solid fa-pen-to-square"></i>
