@@ -1,6 +1,7 @@
 {
     "name": "Dashboard 1",
-    "isLayoutMode": true,
+    "isLayoutMode": false,
+    "isEditMode": true,
     "grow": 0.5,
     "layout": {
         "rows": [

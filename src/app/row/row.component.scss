@@ -43,15 +43,16 @@
     align-self: center;
 }
 
-app-cell.is-resizable{
+app-cell .is-resizable{
     padding-top: 5px!important;
     padding-bottom: 5px!important;
 }
 
-.row{
+.row .is-resizable{
     padding-top: 10px!important;
     padding-bottom: 10px!important;
 }
+
 
 .row-content{
     display: flex;
